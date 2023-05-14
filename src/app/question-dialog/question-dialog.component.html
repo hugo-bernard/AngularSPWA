@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Add Question</h1>
 <div mat-dialog-content>
-    <form [formGroup]="addQuestionForm">
+    <form [formGroup]="addQuestionForm" class="content">
         <mat-form-field appearance="fill">
             <mat-label>Title</mat-label>
             <input matInput formControlName="title" required>
@@ -15,5 +15,5 @@
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="dialogRef.close()">Cancel</button>
-    <button mat-button color="primary" (click)="onSubmit()">Save</button>
+    <button mat-button (click)="onSubmit()">Save</button>
 </div>

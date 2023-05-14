@@ -44,16 +44,21 @@ export class QuestionsComponent implements OnInit {
   answeredQuestions!: Question[];
   unansweredQuestions!: Question[];
   data: any
+
+  // Initiate services use in component
   constructor(
     private ConfigService: ConfigService,
     private sharedService: SharedService,
     private router: Router,
     ) {}
 
+  // Do things on init of component
   ngOnInit() {
+    // redirect to login if the user is not login
     if (!localStorage.getItem('authToken')) {
       this.router.navigate(['/login'])
     }
+    // get all questions
     this.ConfigService.getQuestions().subscribe(data => {
       const qd = Object.values(data)
       this.answeredQuestions = qd.filter(q => q.answers.length > 0);
@@ -69,10 +74,12 @@ export class QuestionsComponent implements OnInit {
     });
   }
 
+  // return list of answered questions
   sortByAnswered() {
     this.data = [...this.answeredQuestions, ...this.unansweredQuestions]
   }
 
+  // return list of unanswered questions
   sortByUnanswered() {
     this.data = [...this.unansweredQuestions, ...this.answeredQuestions]
   }

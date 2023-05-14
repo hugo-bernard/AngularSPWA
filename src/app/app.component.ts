@@ -11,10 +11,11 @@ import { SharedService } from './shared.service';
 })
 export class AppComponent {
   saved!: boolean;
-  excludeRoutes = ['/login', '/signup']; // add routes you want to exclude here
+  excludeRoutes = ['/', '/login', '/signup']; // add routes you want to exclude here
   currentRoute!: string;
   searchValue!: string;
 
+  // Initiate services use in component
   constructor(
     private router: Router,
     private ConfigService: ConfigService,
@@ -36,6 +37,15 @@ export class AppComponent {
     });
   }
 
+  // clear authtoken and get redirect to login page
+  logout() {
+    localStorage.clear()
+    if (!localStorage.getItem('authToken')) {
+      this.router.navigate(['/login'])
+    }
+  }
+
+  // search for an already ask question
   searchQuestion() {
     this.ConfigService.getQuestions().subscribe(data => {
       const qd = Object.values(data)
@@ -46,14 +56,17 @@ export class AppComponent {
     });
   }
 
+  // open the dialog to post a question
   openAddQuestionDialog() {
     const dialogRef = this.dialog.open(QuestionDialogComponent, {
       data: {
         title: "",
         description: ""
-      }
+      },
+      width: '600px'
     });
     
+    //post the question when closing the dialog
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.ConfigService.postQuestion({

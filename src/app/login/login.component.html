@@ -15,7 +15,8 @@
             <mat-card-actions>
                 <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
             </mat-card-actions>
+            <span *ngIf="showErr" class="error">There was an error login in!</span>
         </form>
-        <span *ngIf="showErr" class="error">There was an error login in!</span>
     </mat-card-content>
+    <h4 class="register-link" (click)="redirect_register()">Register</h4>
 </mat-card>

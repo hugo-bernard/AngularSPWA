@@ -54,6 +54,11 @@
     font-weight: bold;
     margin-left: 1rem;
   }
+
+  .dialog {
+    max-width: 100%;
+  }
+
 </style>
 
 <!-- Toolbar -->
@@ -69,5 +74,6 @@
       <app-question-dialog></app-question-dialog>
     </ng-template>
   </div>
+  <button mat-button (click)="logout()">LogOut</button>
 </header>
 <router-outlet></router-outlet>

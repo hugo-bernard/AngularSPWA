@@ -15,6 +15,7 @@ export interface AddQuestionData {
 export class QuestionDialogComponent {
   addQuestionForm: FormGroup;
 
+  // Initiate services use in component
   constructor(
     public dialogRef: MatDialogRef<QuestionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: AddQuestionData,

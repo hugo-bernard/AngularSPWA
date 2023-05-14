@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   isLoading = false;
   showErr: boolean = false
 
+  // Initiate services use in component
   constructor(
     private fb: FormBuilder,
     private ConfigService: ConfigService,
@@ -21,7 +22,9 @@ export class SignupComponent implements OnInit {
     private router: Router
     ) { }
 
+  // Do things on init of component
   ngOnInit() {
+    // redirect to login if the user is not login
     if (localStorage.getItem('authToken')) {
       this.router.navigate(['/questions'])
     }
@@ -32,6 +35,12 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  // redirect to login page
+  redirect_login() {
+    this.router.navigate(['/login'])
+  }
+
+  // register to the app then redirecting to main page and displaying err message if necessary
   onSubmit(): void {
     if (this.signupForm.valid) {
       this.isLoading = true;

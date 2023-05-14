@@ -20,6 +20,7 @@ import { ConfigService } from './config/config.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { QuestionDialogComponent } from './question-dialog/question-dialog.component';
 import { MatOptionModule } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { MatOptionModule } from '@angular/material/core';
     FormsModule,
     HttpClientModule,
     MatDialogModule,
-    MatOptionModule
+    MatOptionModule,
+    CommonModule
   ],
   providers: [ConfigService],
   bootstrap: [AppComponent]

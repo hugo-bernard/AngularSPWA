@@ -14,6 +14,7 @@ export class LoginComponent {
   isLoading = false;
   showErr: boolean = false
 
+  // Initiate services use in component
   constructor(
     private fb: FormBuilder,
     private ConfigService: ConfigService,
@@ -21,7 +22,9 @@ export class LoginComponent {
     private router: Router
     ) { }
 
+  // Do things on init of component
   ngOnInit() {
+    // redirect to login if the user is not login
     if (localStorage.getItem('authToken')) {
       this.router.navigate(['/questions'])
     }
@@ -31,6 +34,12 @@ export class LoginComponent {
     });
   }
 
+  // redirect to register page
+  redirect_register() {
+    this.router.navigate(['/signup'])
+  }
+
+  // login to the app then redirecting to main page and displaying err message if necessary
   onSubmit(): void {
     if (this.loginForm.valid) {
       this.isLoading = true;
