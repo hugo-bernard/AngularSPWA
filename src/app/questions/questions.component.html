@@ -1,0 +1,7 @@
+<div class="questions">
+    <app-question
+      *ngFor="let question of questions"
+      [question]="question"
+      (answered)="onAnswered(question, $event)"
+    ></app-question>
+  </div>
